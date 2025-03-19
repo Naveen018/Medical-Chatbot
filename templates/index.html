@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Medical Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  </head>
+  <body>
+    <div class="chat-container">
+      <header class="chat-header">
+        <h2>🩺 Medical Chatbot</h2>
+      </header>
+
+      <div class="chat-box" id="chat-box">
+        <div class="chat-message bot">
+          <span>👋 Hello! I'm your medical assistant. How can I help you today?</span>
+        </div>
+
+        <!-- Display User's Message (if exists) -->
+        {% if user_input %}
+          <div class="chat-message user">
+            <span>🧑‍⚕️ {{ user_input }}</span>
+          </div>
+        {% endif %}
+
+        <!-- Display Bot's Response (if exists) -->
+        {% if bot_response %}
+          <div class="chat-message bot">
+            <span>🤖 {{ bot_response.content }}</span>
+          </div>
+        {% endif %}
+      </div>
+
+      <form action="{{ url_for('chat') }}" method="post" class="chat-input">
+        <input type="text" name="user_input" id="user-input" placeholder="Type your message..." required />
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </body>
+</html>
