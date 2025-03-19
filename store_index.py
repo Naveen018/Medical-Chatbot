@@ -18,13 +18,13 @@ pc = Pinecone(api_key=PINECONE_API_KEY)
 
 index_name = "medicalbot"
 
-pc.create_index(
+pc.create_index(   # Creates a vector index (medicalbot) on Pinecone Cloud if it doesn’t exist
     name=index_name,
     dimension=1536, # Replace with your model dimensions
     metric="cosine", # Replace with your model metric
     spec=ServerlessSpec(
         cloud="aws",
-        region="us-east-1"
+        region="us-east-1"  # The index is deployed on AWS us-east-1.
     ) 
 )
 
