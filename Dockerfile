@@ -4,7 +4,10 @@ WORKDIR /app
 
 COPY . /app
 
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+RUN pip uninstall -y pinecone-plugin-inference \
+    && pip install --no-cache-dir --upgrade pinecone-client langchain_pinecone
 
 EXPOSE 8090
 
