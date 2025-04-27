@@ -9,3 +9,4 @@ langchain_community
 langchain_openai
 langchain_experimental
 #-e git+https://github.com/Naveen018/Medical-Chatbot.git@dea147dca519e967b8f0d55f6393563d74f45ea1#egg=Medical_Chatbot_GenAI_Project
+langgraph

@@ -17,19 +17,34 @@
           <span>👋 Hello! I'm your medical assistant. How can I help you today?</span>
         </div>
 
-        <!-- Display User's Message (if exists) -->
-        {% if user_input %}
+        <!-- Display Conversation History -->
+        {% if chat_history %}
+          {% for message in chat_history %}
+            {% if message.type == 'human' %}
+              <div class="chat-message user">
+                <span>🧑‍⚕️ {{ message.content }}</span>
+              </div>
+            {% else %}
+              <div class="chat-message bot">
+                <span>🤖 {{ message.content }}</span>
+              </div>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+
+        <!-- Display Current Message (if exists) -->
+        <!-- {% if user_input %}
           <div class="chat-message user">
             <span>🧑‍⚕️ {{ user_input }}</span>
           </div>
-        {% endif %}
+        {% endif %} -->
 
-        <!-- Display Bot's Response (if exists) -->
-        {% if bot_response %}
+        <!-- Display Current Bot Response (if exists) -->
+        <!-- {% if bot_response %}
           <div class="chat-message bot">
-            <span>🤖 {{ bot_response.content }}</span>
+            <span>🤖 {{ bot_response }}</span>
           </div>
-        {% endif %}
+        {% endif %} -->
       </div>
 
       <form action="{{ url_for('chat') }}" method="post" class="chat-input">
